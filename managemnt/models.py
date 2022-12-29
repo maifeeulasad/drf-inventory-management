@@ -12,17 +12,7 @@ class TransactionStatus(models.TextChoices):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     type_of_user = models.TextField(choices=TransactionStatus.choices, default=TransactionStatus.USER)
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    print(sender)
-    # if created:
-    #     Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    print(sender)
-    # instance.profile.save()
+    belongs_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='belongs_to_which_hr')
 
 
 class InventoryItem(models.Model):

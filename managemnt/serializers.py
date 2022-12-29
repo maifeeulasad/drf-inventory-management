@@ -5,7 +5,7 @@ from .models import Profile, InventoryItem, ItemProfileMapping
 class ProfileSerializer(serializers.Serializer):
     class Meta:
         model = Profile
-        fields = ['user', 'type_of_user']
+        fields = ['user', 'type_of_user', 'belongs_to']
 
 
 
